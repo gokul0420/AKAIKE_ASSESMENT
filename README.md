@@ -48,4 +48,4 @@ All necessary packages are imported as defined in `requirements.txt`.
 ---
 
 
-
+### NOTE:Frontend "gradio_app.py" is not a functional file , it isn't completely developed. 

@@ -1,20 +1,53 @@
-# AKAIKE_ASSESMENT
+# 🧠 AKAIKE_ASSESSMENT - Document-Based Q&A Bot
 
-The have developed this Q/A bot by using RAG pipeline such that the system could answer user questions about the document content.
+This project is a **Retrieval-Augmented Generation (RAG)** powered Q&A bot designed to answer questions about a given document — in this case, the **Acko Health Insurance Policy PDF**. The bot uses advanced NLP techniques to extract, embed, and reason over document content, ensuring context-aware and accurate answers.
 
-# Approach
+---
 
-1.I have impoted required libraries as mentioned in the requirements.txt
-2.Initialized text splitter inorder to split doc's text into chunks.
-3.Initialized models for embedding and text generation.
-4.Loaded document("Here I've done for Acko-Health-Insurance.pdf").
-5.Processed pdf in such a way that extracted all text and stored and using the text splitter these extracted text splitted into chunk where each chunk size is of 1000 and used overlap value 150 inorder to maintain context.
-6.These splitted chunks get embedded and pushed to the vectordb(here I used chroma).
-7.I've created retriever where it stores the most similarity chunks("Here I have used top 4 chunks with higher similarity scores")
-8.For these retrieved chunks I would get appropriate text.
-9.I have designed the prompt template in such a way that the system would answer for questions regarding Acko health insurance policy and for questions apart from this it tries to give answer from its previous trained knowledge.And also this prompt template consists of context text i.e retrieved text from above step and the prompt template
+## 🚀 Features
 
-So,basically prompt_template=prompt(by_developer) + retrieved text from previous process + question(from_user)
+- Document-specific Q&A from PDF
+- Built with HuggingFace Transformers and Chroma for VectorDB
+- Uses RAG pipeline with context retention
+- Dynamic prompt generation for hybrid document + general knowledge responses
 
-10.This propmt_template would get passed through the generating model("Here I've used HuggingFace pipeline inorder to load model directly to my local system")
-11.Finally,the system would return answer for the question asked based on the document content provided
+---
+
+## 📄 Document
+
+The current implementation is tailored to:
+
+
+### 1. **Library Imports**
+All necessary packages are imported as defined in `requirements.txt`.
+
+### 2. **Document Splitting**
+- Text from the document is extracted and split into **chunks**.
+- Each chunk is of size `1000` characters with an **overlap of 150** to maintain context flow.
+
+### 3. **Model Initialization**
+- **Embedding Model**: Converts document chunks into vector embeddings.
+- **Text Generation Model**: Loaded using HuggingFace’s `pipeline`, runs locally.
+
+### 4. **Embedding + Vector Storage**
+- Chunks are embedded and stored in **Chroma VectorDB** for efficient similarity retrieval.
+
+### 5. **Retriever Configuration**
+- A retriever is set up to fetch **Top 4** chunks with the highest similarity to the user query.
+
+### 6. **Prompt Template Design**
+- Combines:
+  - Developer-written prompt
+  - Retrieved context chunks
+  - User question
+
+- This ensures the model answers accurately based on document content, and falls back to pretrained knowledge if needed.
+
+### 7. **Response Generation**
+- The assembled prompt is passed to the local generation model.
+- Final response is based on the retrieved content and prompt configuration.
+
+---
+
+
+

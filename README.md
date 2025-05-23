@@ -2,7 +2,8 @@
 
 The have developed this Q/A bot by using RAG pipeline such that the system could answer user questions about the document content.
 
-#Approach
+# Approach
+
 1.I have impoted required libraries as mentioned in the requirements.txt
 2.Initialized text splitter inorder to split doc's text into chunks.
 3.Initialized models for embedding and text generation.
